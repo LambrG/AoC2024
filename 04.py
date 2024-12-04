@@ -24,6 +24,18 @@ def part1(dataset):
                     pass
     return(count)
 
+def part2(dataset):
+    count = 0
+    vzor = ['MAS', 'SAM']
+    for y in range(1,len(dataset)-1):
+        for x in range(1,len(dataset[y])-1):
+            if dataset[y][x] == 'A':
+                    word1 = ''.join([dataset[y-1][x-1], dataset[y][x], dataset[y+1][x+1]])
+                    word2 = ''.join([dataset[y-1][x+1], dataset[y][x], dataset[y+1][x-1]])                  
+                    if word1 in vzor and word2 in vzor:
+                        count +=1
+    return count
+    
 #dataset = read_data('test.txt')
 dataset = read_data('04.txt')
 
@@ -36,3 +48,4 @@ for i in range(4):
     dataset = rotate(dataset)
 
 print(count)
+print(part2(dataset))
