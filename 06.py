@@ -1,4 +1,5 @@
 from file_reader import read_data
+import time
 
 
 dataset = read_data('06.txt')
@@ -53,14 +54,20 @@ def part2(mapa, r,c):
 
 
 print(part1(sr,sc))
+start = time.time()
 count = 0
+loop = 0
+print("x"*130)
 for r in range(len(map_of_area)):
+    print('x',end='', flush=True)
     for c in range(len(map_of_area[r])):
         if map_of_area[r][c] == ".":
             map_of_area[r][c] = "#"
             if part2(map_of_area, sr, sc):
                 count += 1
             map_of_area[r][c] = "."
-        
+
+end = time.time()
 
 print(count)
+print(end - start)
