@@ -1,5 +1,5 @@
 from file_reader import read_data
-
+import time
 
 def find_all_outcomes_part1(outcomes, numbers):
     if len(numbers) == 0:
@@ -54,6 +54,7 @@ for line in dataset:
 
 result1 = 0
 result2 = 0
+start = time.time()
 for equation in equations:
     outcome = set()
     if equation['result'] in find_all_outcomes_part1(outcome,equation['numbers']):
@@ -61,7 +62,8 @@ for equation in equations:
     outcome2 =  set()
     if equation['result'] in find_all_outcomes_part2(outcome2,equation['numbers']):
         result2 += equation['result']
-
+end = time.time()
 print(result1)
 print(result2)
+print(end - start)
 
